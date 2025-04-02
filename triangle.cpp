@@ -55,7 +55,6 @@ bool Triangle::degenerate() const {
 }
 
 bool Triangle::on_border(const Point &P) const {
-    if (degenerate()) return false;
 
     return (fabs(cross_product(A, B, P)) < 1e-9 &&
     min(A.x, B.x) <= P.x && P.x <= max(A.x, B.x) &&
