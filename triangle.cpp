@@ -70,6 +70,12 @@ bool Triangle::on_border(const Point &P) const {
 }
 
 void runcode() {
+    Triangle t;
+    cout << "Введіть координати трикутника (x1 y1 x2 y2 x3 y3): ";
+    cin >> t.A.x >> t.A.y >> t.B.x >> t.B.y >> t.C.x >> t.C.y;
+
+    cout << "Площа трикутника: " << t.area() << endl;
+
     cout << "Оберіть метод перевірки приналежності:\n";
     cout << "1 - Метод площі (Герон)\n";
     cout << "2 - Метод векторного добутку\n";
@@ -85,12 +91,6 @@ void runcode() {
         choice = 1;
     }
 
-    Triangle t;
-    cout << "Введіть координати трикутника (x1 y1 x2 y2 x3 y3): ";
-    cin >> t.A.x >> t.A.y >> t.B.x >> t.B.y >> t.C.x >> t.C.y;
-
-    cout << "Площа трикутника: " << t.area() << endl;
-
     if (t.degenerate()) {
         cout << "Трикутник вироджений!" << endl;
     }
@@ -98,6 +98,10 @@ void runcode() {
     int n;
     cout << "Введіть кількість точок: ";
     cin >> n;
+    while (n < 0 || n > 100) {
+        cout << "Неможливо перевірити приналежність для данної кількості точок. Введіть кількість точок: ";
+        cin >> n;
+    }
     vector<Point> points(n);
 
     for (int i = 0; i < n; ++i) {
